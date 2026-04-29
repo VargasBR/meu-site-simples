@@ -7,7 +7,21 @@
 </head>
 <body>
     <h1>Olá! Este é meu site hospedado em um PaaS.</h1>
-    <p>Data e hora atual: <?php echo date('d/m/Y H:i:s'); ?></p>
-    <script src="script.js"></script>
+    <p>Data e hora atual: <span id="data-hora"></span></p>
+
+<script>
+    function atualizarDataHora() {
+        const agora = new Date();
+        const formato = { 
+            day: '2-digit', month: '2-digit', year: 'numeric', 
+            hour: '2-digit', minute: '2-digit', second: '2-digit' 
+        };
+        document.getElementById('data-hora').innerText = agora.toLocaleString('pt-BR', formato);
+    }
+    
+    // Atualiza agora e a cada segundo
+    atualizarDataHora();
+    setInterval(atualizarDataHora, 1000);
+</script>
 </body>
 </html>
